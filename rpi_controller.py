@@ -22,8 +22,9 @@ GPIO.output(right2,GPIO.LOW)
 
 s = socket(AF_INET, SOCK_DGRAM)
 print("socket created")
-s.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1) 
-s.bind(("192.168.0.103",9999))
+s.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
+ip = input("enter IP address of the RPi : ")
+s.bind((ip,9999))
 print("Enter ^C to stop")
 try:
     while True:
@@ -79,3 +80,4 @@ try:
 except KeyboardInterrupt:
     print("stopping")
     GPIO.cleanup()
+
